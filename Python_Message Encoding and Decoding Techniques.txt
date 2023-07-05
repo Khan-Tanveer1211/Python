@@ -1,0 +1,39 @@
+import random
+import string
+
+String_sen = input("Enter the sentence")
+Choose = int(input("Press 1 for Encoding and 0 for Decoding"))
+
+if Choose == 1 :
+    list1 = String_sen.split()
+    encode_sent = []
+
+    for str in list1:
+        if len(str)>=3:
+            str_new = str[1:]+str[0]
+            ran1= random.choices(string.ascii_lowercase, k=3)
+            ran2= random.choices(string.ascii_lowercase, k=3)
+            ran1=ran1[0]+ran1[1]+ran1[2]
+            ran2=ran2[0]+ran2[1]+ran2[2]
+            str_new1 = ran1 +str_new + ran2
+            encode_sent.append(str_new1)
+           
+        else:
+            str_new1=str[::-1]
+            encode_sent.append(str_new1)
+       
+    print(encode_sent)
+    print(" ".join(encode_sent))
+if Choose == 0:
+    list1 = String_sen.split()
+    decode_sent=[]
+    for word in list1:
+        if len(word)>=3:
+            word1 = word[3:-3]
+            new_word = word1[-1]+word1[:-1]
+            decode_sent.append(new_word)
+        else:
+            new_word=word[::-1]
+            decode_sent.append(new_word)
+    print(decode_sent)
+    print(" ".join(decode_sent))
